@@ -2,26 +2,52 @@ package calculadora;
 import java.util.Scanner;
 public class Prototipo {
           public static void main (String args []) {
-        Boolean aceptar;
         Scanner sc = new Scanner(System.in);
         System.out.println("Elija una opcion");
-        System.out.println("1 Calculadora de sistema de ecuaciones \n2 Ecuaciones 1 y 2 grado \n3 Figuras geometricas");
+        System.out.println("1 Calculadora de sistema de ecuaciones 2x2 \n2 Ecuaciones 1 y 2 grado \n3 Figuras geometricas");
         
-        do {
-            try {
-                Integer op = sc.nextInt();
-                aceptar = true;
-            } 
-            catch (Exception e) {
-                System.out.println("Debes ingresar 1,2 o 3");
-            }
-        } while (aceptar=true);
-        
+        Integer op = sc.nextInt();
+        switch (op) {
+        case 1:
+        	System.out.println("Ingrese x1");
+        	float x1=sc.nextFloat();
+        	System.out.println("Ingrese y1");
+        	float y1=sc.nextFloat();
+        	System.out.println("Ingrese t1");
+        	float t1=sc.nextFloat();
+        	System.out.println("Ingrese x2");
+        	float x2=sc.nextFloat();
+        	System.out.println("Ingrese y2");
+        	float y2=sc.nextFloat();
+        	System.out.println("Ingrese t2");
+        	float t2=sc.nextFloat();
+        	sistema (x1,x2,y1,y2,t1,t2);
+        	break;
+        case 2:
+        	System.out.print("Hola mundo");
+        	break;
+        case 3:
+        	System.out.print("Hola mundo");
+        	break;
+        default:
+        	System.out.println("No es valido ");
+        	break;
+        }
           }
 public static float sistema (float x1,float x2,float y1,float y2,float t1,float t2) {
 	float d =(x1*y2)-(x2*y1);
-	
-	return d;
+	if (d!=0) {
+		float dx=(t1*y2)-(y1*t2);
+		float dy=(t2*x1)-(x2*t1);
+		float x=dx/d;
+		float y=dy/d;
+		System.out.println("Los valores son: \nx="+x+"\ny="+y);
+	}else {
+	    System.out.println("El determinante es 0, no se puede");
+	}
+	float r=0;
+	return r;
 }
+
          
 }
