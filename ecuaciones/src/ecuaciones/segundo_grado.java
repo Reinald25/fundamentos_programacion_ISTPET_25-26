@@ -5,7 +5,7 @@ public class segundo_grado {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner (System.in);
 		 double a,b,c; // coeficientes ax^2+bx+c=0
-		 double x1,x2,d; // soluciones y determinante
+		 double x1,x2,d; // soluciones y determinante de la raiz
 		 System.out.println("Introduzca primer coeficiente (a):");
 		 a=sc.nextDouble();
 		 System.out.println("Introduzca segundo coeficiente: (b):");
