@@ -9,7 +9,9 @@ public class varia {
 		double n1 = sc.nextDouble();
 		System.out.println("Segundo numero");
 		Double n2 = sc.nextDouble();
+		//Se imprime la variable global
 		System.out.println("Variable global "+varia.suma);
+		//se llama a la clase
 		sum();
 		sc.close();
 	}

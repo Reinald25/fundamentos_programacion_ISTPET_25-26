@@ -6,12 +6,7 @@ public class Prototipo {
         Integer op;
         System.out.println("Elija una opcion");
         System.out.println("1 Calculadora de sistema de ecuaciones 2x2 \n2 Ecuaciones 1 y 2 grado \n3 Figuras geometricas");
-        try {
         	 op = sc.nextInt();
-        }catch (Exception e) {
-        	
-        }
-       
         switch (op) {
         case 1:
         	System.out.println("Ingrese x1");
