@@ -1,12 +1,15 @@
 package gestion_de_cliente;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Entrada_de_clientes {
     //clase scanner como instnacia global
-	static String[][] datos = new String[1][1];
 	static boolean encontrado = false;
 	static String afirmacion ="si";
+	static String negacion="no";
 	static final Integer c = 3;
     static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -61,7 +64,12 @@ public static void datos() {
 	    }
 	    //slato de linea
 	    System.out.println(); 
-	    System.out.println("¿Desea buscar un cliente?");
+
+	
+	}
+	
+		while(true) {
+			System.out.println("¿Desea buscar un cliente?");
 	String confirmacion = sc.next();
 	if (confirmacion.equalsIgnoreCase(afirmacion)) {
 		System.out.println("Escriba su nombre o cedula");
@@ -74,28 +82,49 @@ public static void datos() {
 	                if(j==0) {
 	                	 System.out.println("Nombre : "+datos[i1][j]+" Cedula:"+datos[i1][j+1]+" Correo:"+datos[i1][j+2]);
 		            encontrado = true;
-		            break; // Opcional: salir del bucle interno
 	                }
 	                if(j==1) {
 	                	 System.out.println("Nombre:"+datos[i1][j-1]+" Cedula:"+datos[i1][j]+" Correo:"+datos[i1][j+1]);
 		            encontrado = true;
+		            if (!encontrado) System.out.println("Elemento no encontrado");
 		            
-		            break;
 	                }
 		        }
 		    }
 		}
 		
-		if (!encontrado) System.out.println("Elemento no encontrado");
+		
 	
+	}else {
+		break;
 	}
+		}
+		    
 	System.out.println("¿Desea cambiar los datos?");
 		String confirmacion2 = sc.next();
 		if(confirmacion2.equalsIgnoreCase(afirmacion)) {
 			System.out.println("Modificar de quien?");
 		}
-	
+	String ruta = "src/archivo.txt";
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(ruta,true))){
+		for (int i = 0; i < datos.length; i++) {
+            for (int j = 0; j < datos[i].length; j++) {
+                bw.write(datos[i][j]);
+                
+                // Añadimos una coma si no es el último elemento de la fila
+                if (j < datos[i].length - 1) {
+                    bw.write(", ");
+                }
+            }
+            // Al terminar cada fila, saltamos a la siguiente línea
+            bw.newLine(); 
+        }
+        System.out.println("Archivo guardado exitosamente.");
+	}catch(IOException e) {
+		System.out.println(e);
 	}
+	
+	
 }
 
 }
