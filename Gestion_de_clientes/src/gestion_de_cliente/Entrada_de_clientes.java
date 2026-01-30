@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 public class Entrada_de_clientes {
     //clase scanner como instnacia global
+	static String[][] datos = new String[1][1];
+	static boolean encontrado = false;
+	static String afirmacion ="si";
 	static final Integer c = 3;
     static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 		
 		datos();
+		
 		sc.close();
 	}
 
@@ -57,6 +61,40 @@ public static void datos() {
 	    }
 	    //slato de linea
 	    System.out.println(); 
+	    System.out.println("¿Desea buscar un cliente?");
+	String confirmacion = sc.next();
+	if (confirmacion.equalsIgnoreCase(afirmacion)) {
+		System.out.println("Escriba su nombre o cedula");
+		String nbuscar = sc.next();
+		System.out.println("buscando a "+nbuscar);
+		for (int i1 = 0; i1 < datos.length; i1++) {
+		    // Recorrer columnas
+		    for (int j = 0; j < datos[i1].length; j++) {
+		        if (datos[i1][j].equalsIgnoreCase(nbuscar)) {
+	                if(j==0) {
+	                	 System.out.println("Nombre : "+datos[i1][j]+" Cedula:"+datos[i1][j+1]+" Correo:"+datos[i1][j+2]);
+		            encontrado = true;
+		            break; // Opcional: salir del bucle interno
+	                }
+	                if(j==1) {
+	                	 System.out.println("Nombre:"+datos[i1][j-1]+" Cedula:"+datos[i1][j]+" Correo:"+datos[i1][j+1]);
+		            encontrado = true;
+		            
+		            break;
+	                }
+		        }
+		    }
+		}
+		
+		if (!encontrado) System.out.println("Elemento no encontrado");
+	
+	}
+	System.out.println("¿Desea cambiar los datos?");
+		String confirmacion2 = sc.next();
+		if(confirmacion2.equalsIgnoreCase(afirmacion)) {
+			System.out.println("Modificar de quien?");
+		}
+	
 	}
 }
 
